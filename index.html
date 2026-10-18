@@ -1,7 +1,7 @@
 <title>Batyr Military Camp</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@700;800&display=swap">
 <style>
 :root{
   color-scheme:dark;
@@ -36,7 +36,8 @@ h1,h2,h3{font-family:var(--ff-d);font-weight:600;text-transform:uppercase;line-h
 .nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:60;background:rgba(8,11,7,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--edge)}
 .nav-in{max-width:var(--maxw);margin-inline:auto;padding:9px 20px;display:flex;align-items:center;gap:20px}
 .nav-logo{display:flex;align-items:center;gap:11px;text-decoration:none}
-.nav-logo img{width:34px;height:34px;display:block}
+.logo{display:block}
+.nav-logo .logo{width:34px;height:34px;--logo-ink:var(--sand);--logo-paper:var(--night)}
 .nav-logo b{font-family:var(--ff-d);font-size:14.5px;letter-spacing:.2em;font-weight:600}
 .nav-links{display:flex;gap:19px;margin-left:auto;font-family:var(--ff-d);text-transform:uppercase;letter-spacing:.11em;font-size:12.5px}
 .nav-links a{text-decoration:none;color:var(--sand-2);padding-block:5px;border-bottom:1px solid transparent}
@@ -85,10 +86,9 @@ a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{o
   box-shadow:0 44px 70px -34px #000}
 .med-plate::before{content:"";position:absolute;inset:3px;clip-path:inherit;
   background:linear-gradient(155deg,#C9A227,#6E5A16 40%,#2A2410 70%,#B99A2E);opacity:.85}
-.med-plate::after{content:"";position:absolute;inset:7px;clip-path:inherit;
-  background:linear-gradient(155deg,#1E2619,#0B0F08)}
-.med-plate img{position:relative;z-index:2;width:68%;transform:translateZ(26px);
-  filter:drop-shadow(0 10px 16px rgba(0,0,0,.75))}
+.med-plate::after{content:"";position:absolute;inset:7px;clip-path:inherit;background:#141A10}
+.med-plate .logo{position:relative;z-index:2;width:80%;height:auto;transform:translateZ(26px);
+  filter:drop-shadow(0 10px 16px rgba(0,0,0,.75));--logo-ink:#EDEBE1;--logo-paper:#141A10}
 .med-glow{position:absolute;inset:-22%;z-index:-1;background:radial-gradient(circle,rgba(201,162,39,.3),transparent 62%);filter:blur(10px)}
 @keyframes bob{0%,100%{transform:rotateX(8deg) rotateY(-12deg) translateY(0)}50%{transform:rotateX(6deg) rotateY(-7deg) translateY(-12px)}}
 .med-in{animation:bob 7.5s ease-in-out infinite}
@@ -202,7 +202,7 @@ a.ccell:hover span{color:var(--brass-hi)}
 
 footer{border-top:1px solid var(--edge);background:var(--field)}
 .foot-in{max-width:var(--maxw);margin-inline:auto;padding:26px 20px;display:flex;flex-wrap:wrap;gap:14px 24px;align-items:center}
-.foot-in img{width:40px;height:40px;opacity:.8}
+.foot-in .logo{width:40px;height:40px;opacity:.85;--logo-ink:var(--sand-2);--logo-paper:var(--field)}
 .foot-in .mono{color:var(--sand-3)}
 
 @media (prefers-reduced-motion:reduce){
@@ -211,10 +211,37 @@ footer{border-top:1px solid var(--edge);background:var(--field)}
 }
 </style>
 
+<svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true">
+<symbol id="batyr-mark" viewBox="0 0 900 900">
+<defs><clipPath id="bl-inner"><polygon points="450,72 712,212.2 712,689.8 450,830 188,689.8 188,212.2"/></clipPath><clipPath id="bl-badge"><polygon points="450,32.6 745.2,190.6 745.2,709.5 450,867.4 154.8,709.5 154.8,190.6"/></clipPath></defs>
+<g clip-path="url(#bl-badge)">
+<polygon points="450,32.6 745.2,190.6 745.2,709.5 450,867.4 154.8,709.5 154.8,190.6" fill="var(--logo-paper,#EDECE8)"/>
+<polygon points="450,40 740,195.2 740,704.9 450,860 160,704.9 160,195.2" fill="none" stroke="var(--logo-ink,#3B3A36)" stroke-width="9" stroke-linejoin="miter"/>
+<polygon points="450,72 712,212.2 712,689.8 450,830 188,689.8 188,212.2" fill="none" stroke="var(--logo-ink,#3B3A36)" stroke-width="22" stroke-linejoin="miter"/>
+<g clip-path="url(#bl-inner)" fill="var(--logo-ink,#3B3A36)"><path d="M196.0,500.0 L208.8,520.0 L202.4,518.0 L219.1,540.0 L207.5,538.0 L228.6,560.0 L212.3,558.0 L237.6,580.0 L216.8,578.0 L246.3,600.0 L221.1,598.0 L254.7,620.0 L225.4,618.0 L263.0,640.0 L229.5,638.0 L271.0,660.0 L271.0,720.0 L121.0,720.0 L121.0,660.0 L162.5,638.0 L129.0,640.0 L166.6,618.0 L137.3,620.0 L170.9,598.0 L145.7,600.0 L175.2,578.0 L154.4,580.0 L179.7,558.0 L163.4,560.0 L184.5,538.0 L172.9,540.0 L189.6,518.0 L183.2,520.0ZM262.0,585.0 L272.8,600.0 L267.4,598.0 L281.5,615.0 L271.8,613.0 L289.5,630.0 L275.8,628.0 L297.2,645.0 L279.6,643.0 L304.5,660.0 L304.5,720.0 L219.5,720.0 L219.5,660.0 L244.4,643.0 L226.8,645.0 L248.2,628.0 L234.5,630.0 L252.2,613.0 L242.5,615.0 L256.6,598.0 L251.2,600.0ZM326.0,555.0 L336.4,572.5 L331.2,570.5 L344.7,590.0 L335.3,588.0 L352.4,607.5 L339.2,605.5 L359.7,625.0 L342.8,623.0 L366.7,642.5 L346.3,640.5 L373.5,660.0 L373.5,720.0 L278.5,720.0 L278.5,660.0 L305.7,640.5 L285.3,642.5 L309.2,623.0 L292.3,625.0 L312.8,605.5 L299.6,607.5 L316.7,588.0 L307.3,590.0 L320.8,570.5 L315.6,572.5ZM384.0,592.0 L394.2,605.6 L389.1,603.6 L402.4,619.2 L393.2,617.2 L409.9,632.8 L397.0,630.8 L417.1,646.4 L400.5,644.4 L424.0,660.0 L424.0,720.0 L344.0,720.0 L344.0,660.0 L367.5,644.4 L350.9,646.4 L371.0,630.8 L358.1,632.8 L374.8,617.2 L365.6,619.2 L378.9,603.6 L373.8,605.6ZM445.0,478.0 L455.8,498.2 L450.4,496.2 L464.5,518.4 L454.7,516.4 L472.5,538.7 L458.8,536.7 L480.1,558.9 L462.6,556.9 L487.5,579.1 L466.2,577.1 L494.6,599.3 L469.8,597.3 L501.5,619.6 L473.3,617.6 L508.3,639.8 L476.7,637.8 L515.0,660.0 L515.0,720.0 L375.0,720.0 L375.0,660.0 L413.3,637.8 L381.7,639.8 L416.7,617.6 L388.5,619.6 L420.2,597.3 L395.4,599.3 L423.8,577.1 L402.5,579.1 L427.4,556.9 L409.9,558.9 L431.2,536.7 L417.5,538.7 L435.3,516.4 L425.5,518.4 L439.6,496.2 L434.2,498.2ZM518.0,560.0 L528.4,576.7 L523.2,574.7 L536.7,593.3 L527.3,591.3 L544.4,610.0 L531.2,608.0 L551.7,626.7 L534.8,624.7 L558.7,643.3 L538.3,641.3 L565.5,660.0 L565.5,720.0 L470.5,720.0 L470.5,660.0 L497.7,641.3 L477.3,643.3 L501.2,624.7 L484.3,626.7 L504.8,608.0 L491.6,610.0 L508.7,591.3 L499.3,593.3 L512.8,574.7 L507.6,576.7ZM578.0,590.0 L588.2,604.0 L583.1,602.0 L596.4,618.0 L587.2,616.0 L603.9,632.0 L591.0,630.0 L611.1,646.0 L594.5,644.0 L618.0,660.0 L618.0,720.0 L538.0,720.0 L538.0,660.0 L561.5,644.0 L544.9,646.0 L565.0,630.0 L552.1,632.0 L568.8,616.0 L559.6,618.0 L572.9,602.0 L567.8,604.0ZM634.0,560.0 L643.8,576.7 L638.9,574.7 L651.7,593.3 L642.8,591.3 L659.0,610.0 L646.5,608.0 L665.9,626.7 L649.9,624.7 L672.5,643.3 L653.3,641.3 L679.0,660.0 L679.0,720.0 L589.0,720.0 L589.0,660.0 L614.7,641.3 L595.5,643.3 L618.1,624.7 L602.1,626.7 L621.5,608.0 L609.0,610.0 L625.2,591.3 L616.3,593.3 L629.1,574.7 L624.2,576.7ZM700.0,505.0 L712.8,524.4 L706.4,522.4 L723.1,543.8 L711.5,541.8 L732.6,563.1 L716.3,561.1 L741.6,582.5 L720.8,580.5 L750.3,601.9 L725.1,599.9 L758.7,621.2 L729.4,619.2 L767.0,640.6 L733.5,638.6 L775.0,660.0 L775.0,720.0 L625.0,720.0 L625.0,660.0 L666.5,638.6 L633.0,640.6 L670.6,619.2 L641.3,621.2 L674.9,599.9 L649.7,601.9 L679.2,580.5 L658.4,582.5 L683.7,561.1 L667.4,563.1 L688.5,541.8 L676.9,543.8 L693.6,522.4 L687.2,524.4Z"/><rect x="150" y="640" width="600" height="260"/></g>
+<rect x="135" y="290" width="80" height="225" fill="var(--logo-paper,#EDECE8)"/>
+<rect x="685" y="290" width="80" height="225" fill="var(--logo-paper,#EDECE8)"/>
+<g fill="var(--logo-ink,#3B3A36)">
+ <g transform="translate(434,0)"><path d="M-2,150 L2,150 L2.5,188 L5,190 L5,206 L6,208 L6,244 L4,246 L8,276 L-8,280 L-6,248 L-6,244 L-9,242 L-24,256 L-29,251 L-12,238 L-6,236 L-6,224 Q-22,226 -34,214 L-29,208 Q-20,217 -6,215 L-6,208 L-5,206 L-5,190 L-2.5,188 Z"/><rect x="-3.5" y="166" width="7" height="4"/></g>
+ <g transform="translate(466,0) scale(-1,1)"><path d="M-2,150 L2,150 L2.5,188 L5,190 L5,206 L6,208 L6,244 L4,246 L8,276 L-8,280 L-6,248 L-6,244 L-9,242 L-24,256 L-29,251 L-12,238 L-6,236 L-6,224 Q-22,226 -34,214 L-29,208 Q-20,217 -6,215 L-6,208 L-5,206 L-5,190 L-2.5,188 Z"/><rect x="-3.5" y="166" width="7" height="4"/></g>
+</g>
+<g font-family="Montserrat, 'Montserrat Thin', sans-serif" fill="var(--logo-ink,#3B3A36)" text-anchor="middle">
+ <text x="328" y="252" font-size="30" font-weight="700" letter-spacing="5">ESTD.</text>
+ <text x="570" y="252" font-size="30" font-weight="700" letter-spacing="5">2023</text>
+ <text x="454" y="428" font-size="128" font-weight="800" letter-spacing="4">BATYR</text>
+ <text x="266" y="493" font-size="42" font-weight="700" letter-spacing="7">MILITARY</text>
+ <text x="630" y="493" font-size="42" font-weight="700" letter-spacing="7">CAMP</text>
+ <text x="452" y="722" font-size="30" font-weight="700" letter-spacing="6" fill="var(--logo-paper,#EDECE8)">ALMATY</text>
+</g>
+<g fill="var(--logo-paper,#EDECE8)"><rect x="400" y="742" width="13" height="13"/><rect x="443" y="742" width="13" height="13"/><rect x="486" y="742" width="13" height="13"/></g>
+</g>
+</symbol>
+</svg>
+
 <nav class="nav">
   <div class="nav-in">
     <a class="nav-logo" href="#top">
-      <img src="media/logo-light.png" alt="Batyr Military Camp">
+      <svg class="logo" viewBox="0 0 900 900" role="img" aria-label="Batyr Military Camp"><use href="#batyr-mark"/></svg>
       <b>BATYR</b>
     </a>
     <div class="nav-links">
@@ -257,7 +284,7 @@ footer{border-top:1px solid var(--edge);background:var(--field)}
     <div class="medallion" id="medallion">
       <div class="med-in">
         <div class="med-glow"></div>
-        <div class="med-plate"><img src="media/logo-light.png" alt="Эмблема Batyr Military Camp"></div>
+        <div class="med-plate"><svg class="logo" viewBox="0 0 900 900" role="img" aria-label="Эмблема Batyr Military Camp"><use href="#batyr-mark"/></svg></div>
       </div>
     </div>
   </div>
@@ -455,7 +482,7 @@ footer{border-top:1px solid var(--edge);background:var(--field)}
 
 <footer>
   <div class="foot-in">
-    <img src="media/logo-light.png" alt="">
+    <svg class="logo" viewBox="0 0 900 900" aria-hidden="true"><use href="#batyr-mark"/></svg>
     <span class="mono">Batyr Military Camp · Almaty · с 2023</span>
     <span style="margin-left:auto"><a class="mono" href="https://www.instagram.com/batyr_educationkz/" target="_blank" rel="noopener">@batyr_educationkz</a></span>
   </div>
