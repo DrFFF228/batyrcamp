@@ -1,0 +1,577 @@
+<title>Batyr Military Camp</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  color-scheme:dark;
+  --night:#080B07; --field:#0F140D; --panel:#161C13; --panel-2:#1E2619;
+  --edge:#2B3425; --edge-hi:#404C36;
+  --sand:#E9E7DC; --sand-2:#A6AC97; --sand-3:#6E7762;
+  --brass:#C9A227; --brass-hi:#E8C65C; --on-brass:#12170E;
+  --orange:#E2622A;
+  --maxw:1140px;
+  --ff-d:"Oswald","Arial Narrow",Impact,sans-serif;
+  --ff-b:"Golos Text","Helvetica Neue",Arial,sans-serif;
+  --ff-m:"JetBrains Mono",ui-monospace,"Courier New",monospace;
+  --bevel:inset 0 1px 0 var(--edge-hi), inset 0 -1px 0 #05070422, 0 22px 44px -24px #000;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--night);color:var(--sand);font-family:var(--ff-b);font-size:16px;line-height:1.62;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%}
+a{color:inherit}
+p{margin:0}
+h1,h2,h3{font-family:var(--ff-d);font-weight:600;text-transform:uppercase;line-height:1.04;margin:0;text-wrap:balance}
+.ext{text-shadow:1px 1px 0 var(--edge-hi),2px 2px 0 var(--edge),3px 3px 0 #141A10,4px 6px 14px rgba(0,0,0,.75)}
+
+.wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:20px}
+.sect{padding-block:clamp(58px,8vw,108px);position:relative}
+.mono{font-family:var(--ff-m);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--sand-3)}
+.eyebrow{font-family:var(--ff-m);font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--brass);display:inline-flex;align-items:center;gap:9px}
+.eyebrow::before{content:"";width:26px;height:1px;background:var(--brass)}
+.lede{color:var(--sand-2);max-width:62ch}
+.fill{font-family:var(--ff-m);font-size:.84em;letter-spacing:.05em;color:var(--brass-hi);border-bottom:1px dashed currentColor;white-space:nowrap}
+
+/* ============ nav ============ */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:60;background:rgba(8,11,7,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--edge)}
+.nav-in{max-width:var(--maxw);margin-inline:auto;padding:9px 20px;display:flex;align-items:center;gap:20px}
+.nav-logo{display:flex;align-items:center;gap:11px;text-decoration:none}
+.nav-logo img{width:34px;height:34px;display:block}
+.nav-logo b{font-family:var(--ff-d);font-size:14.5px;letter-spacing:.2em;font-weight:600}
+.nav-links{display:flex;gap:19px;margin-left:auto;font-family:var(--ff-d);text-transform:uppercase;letter-spacing:.11em;font-size:12.5px}
+.nav-links a{text-decoration:none;color:var(--sand-2);padding-block:5px;border-bottom:1px solid transparent}
+.nav-links a:hover{color:var(--sand);border-bottom-color:var(--brass)}
+@media (max-width:900px){.nav-links{display:none}}
+
+.btn{display:inline-flex;align-items:center;gap:9px;font-family:var(--ff-d);text-transform:uppercase;letter-spacing:.12em;font-size:13px;font-weight:500;padding:12px 20px;text-decoration:none;border:1px solid transparent;position:relative;transition:transform .14s ease,box-shadow .14s ease,background .14s ease;
+  clip-path:polygon(9px 0,100% 0,100% calc(100% - 9px),calc(100% - 9px) 100%,0 100%,0 9px)}
+.btn svg{width:16px;height:16px;flex:0 0 auto}
+.btn-brass{background:linear-gradient(170deg,var(--brass-hi),var(--brass));color:var(--on-brass);box-shadow:0 10px 26px -12px rgba(201,162,39,.75),inset 0 1px 0 rgba(255,255,255,.45)}
+.btn-brass:hover{transform:translateY(-2px);box-shadow:0 16px 32px -12px rgba(201,162,39,.85),inset 0 1px 0 rgba(255,255,255,.55)}
+.btn-steel{background:linear-gradient(170deg,var(--panel-2),var(--panel));color:var(--sand);border-color:var(--edge);box-shadow:var(--bevel)}
+.btn-steel:hover{transform:translateY(-2px);border-color:var(--edge-hi)}
+.nav .btn{padding:9px 15px;font-size:12px}
+a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
+
+/* ============ hero ============ */
+.hero{position:relative;min-height:clamp(560px,78vh,760px);display:flex;flex-direction:column;justify-content:center;overflow:hidden;
+  background:radial-gradient(118% 76% at 72% 6%,#243018 0%,#121A0E 42%,var(--night) 78%)}
+#scene{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:0}
+.ridge{position:absolute;left:0;right:0;bottom:0;z-index:1;pointer-events:none;opacity:.9}
+.hero-scrim{position:absolute;inset:0;z-index:2;pointer-events:none;
+  background:linear-gradient(94deg,rgba(8,11,7,.94) 6%,rgba(8,11,7,.66) 46%,rgba(8,11,7,.2) 72%),
+             linear-gradient(to bottom,rgba(8,11,7,.55),transparent 26%,rgba(8,11,7,.7))}
+.hero-in{position:relative;z-index:3;max-width:var(--maxw);margin-inline:auto;width:100%;padding:clamp(34px,5vw,56px) 20px;
+  display:grid;grid-template-columns:minmax(0,1.42fr) minmax(0,.58fr);gap:40px;align-items:center}
+@media (max-width:900px){.hero-in{grid-template-columns:1fr;gap:28px}.medallion{order:-1;justify-self:start}}
+.hero h1{max-width:100%;font-size:clamp(34px,5.4vw,62px);font-weight:700;letter-spacing:-.008em;margin-block:18px 20px}
+.hero h1 em{display:block;font-style:normal;font-weight:400;font-size:.37em;letter-spacing:.2em;color:var(--brass);margin-top:16px;text-shadow:none}
+.hero .lede{font-size:clamp(15px,1.5vw,17.5px)}
+.hero-cta{display:flex;flex-wrap:wrap;gap:13px;margin-top:30px}
+
+/* HUD */
+.hud{position:absolute;z-index:3;font-family:var(--ff-m);font-size:10.5px;letter-spacing:.16em;color:var(--sand-3);text-transform:uppercase}
+.hud-tl{top:16px;left:20px;display:flex;gap:14px;align-items:center}
+.hud-br{bottom:16px;right:20px;text-align:right}
+.hud .dot{width:6px;height:6px;background:var(--orange);border-radius:50%;box-shadow:0 0 10px var(--orange)}
+@media (max-width:900px){.hud-br{display:none}}
+
+/* 3D медальон с логотипом */
+.medallion{perspective:900px;width:min(300px,62vw)}
+.med-in{position:relative;transform-style:preserve-3d;transform:rotateX(8deg) rotateY(-12deg);transition:transform .35s cubic-bezier(.2,.7,.3,1)}
+.med-plate{position:relative;aspect-ratio:1;display:grid;place-items:center;
+  clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);
+  background:linear-gradient(155deg,#3A472E,#141A0F 58%,#0C1008);
+  box-shadow:0 44px 70px -34px #000}
+.med-plate::before{content:"";position:absolute;inset:3px;clip-path:inherit;
+  background:linear-gradient(155deg,#C9A227,#6E5A16 40%,#2A2410 70%,#B99A2E);opacity:.85}
+.med-plate::after{content:"";position:absolute;inset:7px;clip-path:inherit;
+  background:linear-gradient(155deg,#1E2619,#0B0F08)}
+.med-plate img{position:relative;z-index:2;width:68%;transform:translateZ(26px);
+  filter:drop-shadow(0 10px 16px rgba(0,0,0,.75))}
+.med-glow{position:absolute;inset:-22%;z-index:-1;background:radial-gradient(circle,rgba(201,162,39,.3),transparent 62%);filter:blur(10px)}
+@keyframes bob{0%,100%{transform:rotateX(8deg) rotateY(-12deg) translateY(0)}50%{transform:rotateX(6deg) rotateY(-7deg) translateY(-12px)}}
+.med-in{animation:bob 7.5s ease-in-out infinite}
+.medallion.tilting .med-in{animation:none}
+
+/* ============ stats ============ */
+.stats{position:relative;z-index:3;border-block:1px solid var(--edge);background:linear-gradient(180deg,var(--panel),var(--field))}
+.stats-in{max-width:var(--maxw);margin-inline:auto;padding-inline:20px;display:grid;grid-template-columns:repeat(4,1fr)}
+@media (max-width:720px){.stats-in{grid-template-columns:repeat(2,1fr)}}
+.stat{padding:18px 0 18px 20px;border-left:1px solid var(--edge)}
+.stat:first-child{border-left:0;padding-left:0}
+@media (max-width:720px){.stat:nth-child(3){border-left:0;padding-left:0}.stat:nth-child(n+3){border-top:1px solid var(--edge)}}
+.stat b{display:block;font-family:var(--ff-d);font-size:27px;font-weight:600;font-variant-numeric:tabular-nums;color:var(--sand)}
+.stat span{font-family:var(--ff-m);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--sand-3)}
+
+/* ============ заголовки секций ============ */
+.head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:26px;align-items:end;margin-bottom:42px}
+@media (max-width:780px){.head{grid-template-columns:1fr;gap:14px}}
+.head h2{font-size:clamp(28px,3.8vw,46px);margin-top:14px}
+
+/* ============ направления ============ */
+.dirs{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:18px;perspective:1400px}
+@media (max-width:880px){.dirs{grid-template-columns:1fr}}
+.dcol{display:grid;gap:18px;align-content:start}
+.dir{position:relative;padding:clamp(24px,3vw,36px);display:flex;flex-direction:column;gap:15px;
+  background:linear-gradient(158deg,var(--panel-2),var(--panel) 62%,#10150D);
+  border:1px solid var(--edge);box-shadow:var(--bevel);
+  transform-style:preserve-3d;transition:transform .3s cubic-bezier(.2,.7,.3,1),box-shadow .3s,border-color .3s;
+  clip-path:polygon(16px 0,100% 0,100% calc(100% - 16px),calc(100% - 16px) 100%,0 100%,0 16px)}
+.dir:hover{transform:translateY(-7px) rotateX(2.6deg) rotateY(-2.6deg);border-color:var(--edge-hi);
+  box-shadow:inset 0 1px 0 var(--edge-hi),0 40px 60px -28px #000}
+.dir-lead{background:linear-gradient(158deg,#26311C,#161D12 58%,#0D1209)}
+.dir-lead::after{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--brass),transparent)}
+.dtag{font-family:var(--ff-m);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--brass)}
+.dir h3{font-size:clamp(22px,2.7vw,31px)}
+.dir-lead h3{font-size:clamp(27px,3.5vw,42px)}
+.dir p{color:var(--sand-2);font-size:15.2px}
+.dir ul{margin:0;padding:0;list-style:none;display:grid;gap:7px;font-size:14.6px;color:var(--sand-2)}
+.dir li{display:flex;gap:10px}
+.dir li::before{content:"";flex:0 0 auto;width:5px;height:5px;margin-top:9px;background:var(--brass);transform:rotate(45deg)}
+.dir .more{font-family:var(--ff-d);text-transform:uppercase;letter-spacing:.12em;font-size:12.5px;color:var(--brass-hi);text-decoration:none;align-self:start;border-bottom:1px solid var(--brass);padding-bottom:3px}
+
+/* ============ распорядок ============ */
+.two{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:clamp(26px,5vw,60px);align-items:start}
+@media (max-width:880px){.two{grid-template-columns:1fr}}
+.sched-row{display:grid;grid-template-columns:76px 1fr;gap:16px;padding:11px 0;border-top:1px solid var(--edge);align-items:baseline}
+.sched-row:first-child{border-top:0}
+.sched-row time{font-family:var(--ff-m);font-variant-numeric:tabular-nums;color:var(--brass);font-size:14px;letter-spacing:.04em}
+.sched-row span{font-size:15.2px}
+.sched-row.key span{font-weight:600}
+.sched-row.key time{color:var(--brass-hi)}
+.note{font-size:13.4px;color:var(--sand-3);border-left:2px solid var(--orange);padding-left:14px;margin-top:22px}
+
+.disc{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--edge);border:1px solid var(--edge);box-shadow:var(--bevel)}
+@media (max-width:430px){.disc{grid-template-columns:1fr}}
+.disc div{background:linear-gradient(160deg,var(--panel-2),var(--panel));padding:17px 18px;transition:background .2s}
+.disc div:hover{background:linear-gradient(160deg,#28321F,var(--panel-2))}
+.disc b{display:block;font-family:var(--ff-d);text-transform:uppercase;letter-spacing:.06em;font-size:14.5px;font-weight:500}
+.disc small{color:var(--sand-3);font-size:12.8px;line-height:1.45;display:block;margin-top:4px}
+
+/* ============ снаряжение ============ */
+.kit{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:4px 26px}
+.kit label{display:flex;gap:12px;align-items:flex-start;font-size:15px;color:var(--sand-2);cursor:pointer;padding:7px 0;border-bottom:1px solid #1A2016}
+.kit input{appearance:none;width:18px;height:18px;flex:0 0 auto;margin-top:3px;border:1px solid var(--sand-3);background:linear-gradient(160deg,var(--panel-2),var(--panel));cursor:pointer;position:relative;
+  clip-path:polygon(4px 0,100% 0,100% calc(100% - 4px),calc(100% - 4px) 100%,0 100%,0 4px)}
+.kit input:checked{background:linear-gradient(160deg,var(--brass-hi),var(--brass));border-color:var(--brass)}
+.kit input:checked::after{content:"";position:absolute;left:5px;top:1px;width:5px;height:10px;border:solid var(--on-brass);border-width:0 2px 2px 0;transform:rotate(42deg)}
+.kit input:checked+span{color:var(--sand-3);text-decoration:line-through}
+.kit-foot{display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin-top:26px}
+.kit-foot button{font-family:var(--ff-d);text-transform:uppercase;letter-spacing:.12em;font-size:12px;background:linear-gradient(160deg,var(--panel-2),var(--panel));border:1px solid var(--edge);color:var(--sand-2);padding:9px 16px;cursor:pointer;box-shadow:var(--bevel);
+  clip-path:polygon(7px 0,100% 0,100% calc(100% - 7px),calc(100% - 7px) 100%,0 100%,0 7px)}
+.kit-foot button:hover{border-color:var(--brass);color:var(--sand)}
+.kit-count{font-family:var(--ff-m);font-size:11.5px;letter-spacing:.12em;color:var(--brass);font-variant-numeric:tabular-nums}
+
+/* ============ безопасность ============ */
+.band-safety{background:
+  repeating-linear-gradient(135deg,rgba(226,98,42,.05) 0 10px,transparent 10px 20px),
+  linear-gradient(180deg,#131A0F,var(--night));border-block:1px solid var(--edge)}
+.safety{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px}
+.safety div{border-top:2px solid var(--orange);padding-top:15px}
+.safety b{display:block;font-family:var(--ff-d);text-transform:uppercase;letter-spacing:.06em;font-size:15.5px;margin-bottom:6px}
+.safety p{color:var(--sand-2);font-size:14.6px}
+
+/* ============ галерея ============ */
+.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:13px;perspective:1200px}
+.slot{aspect-ratio:4/5;max-width:100%;border:1px solid var(--edge);display:flex;flex-direction:column;justify-content:flex-end;padding:15px;gap:3px;position:relative;
+  background:linear-gradient(160deg,var(--panel),#0D1209);box-shadow:var(--bevel);transition:transform .3s,border-color .3s;
+  clip-path:polygon(13px 0,100% 0,100% calc(100% - 13px),calc(100% - 13px) 100%,0 100%,0 13px)}
+.slot:hover{transform:translateY(-5px) rotateX(3deg);border-color:var(--brass)}
+.slot::before{content:"";position:absolute;left:15px;top:15px;width:16px;height:16px;border-left:1px solid var(--sand-3);border-top:1px solid var(--sand-3);opacity:.6}
+.slot b{font-family:var(--ff-d);text-transform:uppercase;letter-spacing:.08em;font-size:13.5px;font-weight:500}
+.slot small{font-family:var(--ff-m);font-size:10px;letter-spacing:.1em;color:var(--sand-3)}
+
+/* ============ faq ============ */
+.faq{border-top:1px solid var(--edge)}
+.faq details{border-bottom:1px solid var(--edge)}
+.faq summary{cursor:pointer;list-style:none;padding:19px 0;font-family:var(--ff-d);text-transform:uppercase;letter-spacing:.04em;font-size:16.5px;display:flex;gap:16px;align-items:baseline}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";margin-left:auto;color:var(--brass);font-size:20px;line-height:1}
+.faq details[open] summary::after{content:"\2013"}
+.faq summary:hover{color:var(--brass-hi)}
+.faq p{padding:0 0 19px;color:var(--sand-2);max-width:68ch;font-size:15.2px}
+
+/* ============ контакты ============ */
+.cgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:var(--edge);border:1px solid var(--edge);margin-top:34px;box-shadow:var(--bevel)}
+.cgrid > *{background:linear-gradient(160deg,var(--panel-2),var(--panel));padding:21px;display:flex;flex-direction:column;gap:6px;text-decoration:none;transition:background .2s}
+a.ccell:hover{background:linear-gradient(160deg,#2A341F,var(--panel-2))}
+.cgrid b{font-family:var(--ff-m);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--sand-3);font-weight:400}
+.cgrid span{font-size:16px}
+a.ccell:hover span{color:var(--brass-hi)}
+
+footer{border-top:1px solid var(--edge);background:var(--field)}
+.foot-in{max-width:var(--maxw);margin-inline:auto;padding:26px 20px;display:flex;flex-wrap:wrap;gap:14px 24px;align-items:center}
+.foot-in img{width:40px;height:40px;opacity:.8}
+.foot-in .mono{color:var(--sand-3)}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .med-in{transform:rotateX(6deg) rotateY(-8deg)}
+}
+</style>
+
+<nav class="nav">
+  <div class="nav-in">
+    <a class="nav-logo" href="#top">
+      <img src="media/logo-light.png" alt="Batyr Military Camp">
+      <b>BATYR</b>
+    </a>
+    <div class="nav-links">
+      <a href="#napravleniya">Направления</a>
+      <a href="#smena">Смена</a>
+      <a href="#snaryazhenie">Снаряжение</a>
+      <a href="#bezopasnost">Безопасность</a>
+      <a href="#voprosy">Вопросы</a>
+    </div>
+    <a class="btn btn-brass" href="https://wa.me/message/PPQJOGIJWX2AD1" target="_blank" rel="noopener">Записаться</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <canvas id="scene" aria-hidden="true"></canvas>
+  <svg class="ridge" viewBox="0 0 1440 220" preserveAspectRatio="none" aria-hidden="true" height="190">
+    <path d="M0 220V150l60-18 54 14 48-26 70 20 52-30 64 24 58-16 70 28 56-22 66 16 60-28 72 26 54-18 68 22 60-14 66 24 58-20 70 16 54-12 60 18v146z" fill="#121A0B"/>
+  </svg>
+  <div class="hero-scrim"></div>
+
+  <div class="hud hud-tl"><span class="dot"></span><span>Batyr Military Camp · Operational</span></div>
+  <div class="hud hud-br">43°14′ N  76°53′ E · Алматы<br>51°10′ N  71°26′ E · Астана</div>
+
+  <div class="hero-in">
+    <div>
+      <span class="eyebrow">ESTD 2023 · Алматы · Астана</span>
+      <h1 class="ext">Военно‑спортивный<br>лагерь для детей
+        <em>Batyr Military Camp</em>
+      </h1>
+      <p class="lede">Загородные смены, круглогодичная секция по страйкболу и собственная арена в Алматы. Настоящий распорядок, полевое снаряжение и командная работа — без казармы и крика.</p>
+      <div class="hero-cta">
+        <a class="btn btn-brass" href="https://wa.me/message/PPQJOGIJWX2AD1" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm0 2a8 8 0 11-4.1 14.9l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 0112 4zm-3.5 4.3c-.2 0-.5.1-.7.4-.3.3-.9.9-.9 2.1s.9 2.4 1 2.6c.1.2 1.8 2.8 4.4 3.8 2.2.9 2.6.7 3.1.7.5 0 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.6-.3-1.6-.8c-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1-.2-.1-1-.4-1.9-1.2-.7-.6-1.2-1.4-1.3-1.6-.1-.2 0-.4.1-.5l.4-.5c.1-.2.2-.3.2-.5 0-.2 0-.3-.1-.5l-.8-1.9c-.2-.4-.4-.4-.6-.4z"/></svg>
+          Написать в WhatsApp
+        </a>
+        <a class="btn btn-steel" href="https://www.instagram.com/batyr_educationkz/" target="_blank" rel="noopener">@batyr_educationkz</a>
+      </div>
+    </div>
+
+    <div class="medallion" id="medallion">
+      <div class="med-in">
+        <div class="med-glow"></div>
+        <div class="med-plate"><img src="media/logo-light.png" alt="Эмблема Batyr Military Camp"></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="stats">
+  <div class="stats-in">
+    <div class="stat"><b>2023</b><span>год основания</span></div>
+    <div class="stat"><b>2</b><span>города базирования</span></div>
+    <div class="stat"><b>3 278</b><span>подписчиков</span></div>
+    <div class="stat"><b><span class="fill">[смен]</span></b><span>проведено</span></div>
+  </div>
+</div>
+
+<main>
+<section class="sect" id="napravleniya">
+  <div class="wrap">
+    <div class="head">
+      <div><span class="eyebrow">Чем мы занимаемся</span><h2 class="ext">Три направления</h2></div>
+      <p class="lede">Можно приехать на одну смену, заниматься в секции весь год или просто выйти на арену компанией.</p>
+    </div>
+    <div class="dirs">
+      <article class="dir dir-lead tilt">
+        <div><span class="dtag">Выездная смена</span><h3 class="ext" style="margin-top:9px">BATYRCAMP</h3></div>
+        <p>Загородный лагерь с полным распорядком дня: тактическая и огневая подготовка на страйкбольных приводах, спорт, полевые выходы, вечерние построения и костёр. Инструкторы живут со сменой круглосуточно.</p>
+        <ul>
+          <li>Возраст: <span class="fill">[от _ до _ лет]</span></li>
+          <li>Длительность: <span class="fill">[_ дней]</span></li>
+          <li>Размещение: <span class="fill">[корпуса / палатки]</span></li>
+          <li>Ближайшая смена: <span class="fill">[Зима 2026, даты]</span></li>
+        </ul>
+        <a class="more" href="#smena">Как проходит день</a>
+      </article>
+      <div class="dcol">
+        <article class="dir tilt">
+          <div><span class="dtag">Круглый год</span><h3 style="margin-top:9px">Секция страйкбола</h3></div>
+          <p>Регулярные тренировки в течение учебного года: безопасное обращение с приводом, тактика, работа в двойке и тройке, физподготовка, игры по выходным.</p>
+          <ul><li>Расписание: <span class="fill">[дни и время]</span></li><li>Абонемент: <span class="fill">[стоимость]</span></li></ul>
+          <a class="more" href="https://wa.me/message/PPQJOGIJWX2AD1" target="_blank" rel="noopener">Пробное занятие</a>
+        </article>
+        <article class="dir tilt">
+          <div><span class="dtag">Алматы</span><h3 style="margin-top:9px">Страйкбольная арена</h3></div>
+          <p>Площадка для игр компанией, дней рождения и корпоративов. Выдаём привод, маску и шары, инструктор проводит инструктаж и судит игру.</p>
+          <ul><li>Адрес: <span class="fill">[адрес арены]</span></li><li>Аренда: <span class="fill">[цена]</span></li></ul>
+          <a class="more" href="https://wa.me/message/PPQJOGIJWX2AD1" target="_blank" rel="noopener">Забронировать</a>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sect" id="smena" style="background:linear-gradient(180deg,var(--night),#0D120B,var(--night));border-block:1px solid var(--edge)">
+  <div class="wrap">
+    <div class="head">
+      <div><span class="eyebrow">Внутри смены</span><h2 class="ext">Распорядок дня</h2></div>
+      <p class="lede">День идёт по расписанию, как в настоящем полевом лагере. Ребёнок знает, что будет дальше, и привыкает к режиму за первые два дня.</p>
+    </div>
+    <div class="two">
+      <div>
+        <div class="sched">
+          <div class="sched-row"><time>07:00</time><span>Подъём</span></div>
+          <div class="sched-row"><time>07:15</time><span>Зарядка, утренний осмотр</span></div>
+          <div class="sched-row"><time>08:00</time><span>Построение, развод на занятия</span></div>
+          <div class="sched-row"><time>08:30</time><span>Завтрак</span></div>
+          <div class="sched-row key"><time>09:30</time><span>Тактическая подготовка</span></div>
+          <div class="sched-row key"><time>12:00</time><span>Огневая подготовка (страйкбол)</span></div>
+          <div class="sched-row"><time>13:30</time><span>Обед</span></div>
+          <div class="sched-row"><time>14:30</time><span>Личное время, отдых</span></div>
+          <div class="sched-row"><time>16:00</time><span>Спортивный блок</span></div>
+          <div class="sched-row"><time>18:00</time><span>Ужин</span></div>
+          <div class="sched-row key"><time>19:00</time><span>Тактическая игра, вечернее мероприятие</span></div>
+          <div class="sched-row"><time>21:00</time><span>Построение, разбор дня</span></div>
+          <div class="sched-row"><time>22:00</time><span>Отбой</span></div>
+        </div>
+        <p class="note">Распорядок ориентировочный — <span class="fill">[сверить с реальным]</span>. В дни полевого выхода и ночной игры расписание сдвигается.</p>
+      </div>
+      <div>
+        <h3 style="font-size:19px;margin-bottom:17px">Дисциплины</h3>
+        <div class="disc">
+          <div><b>Тактическая подготовка</b><small>Передвижение, укрытия, работа в группе, связь жестами</small></div>
+          <div><b>Огневая подготовка</b><small>Страйкбольные приводы, техника безопасности, стрельба по мишеням</small></div>
+          <div><b>Строевая</b><small>Построение, строевой шаг, элементы смотра</small></div>
+          <div><b>Топография</b><small>Карта, компас, ориентирование на местности</small></div>
+          <div><b>Первая помощь</b><small>Остановка кровотечения, эвакуация условно раненого</small></div>
+          <div><b>Выживание</b><small>Узлы, костёр, укрытие, поведение в лесу</small></div>
+          <div><b>Физподготовка</b><small>Полоса препятствий, бег, функциональные круги</small></div>
+          <div><b>Связь</b><small>Радиообмен, позывные, доклад по рации</small></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sect" id="snaryazhenie">
+  <div class="wrap">
+    <div class="head">
+      <div><span class="eyebrow">Перед выездом</span><h2 class="ext">Что собрать с собой</h2></div>
+      <p class="lede">Список для родителей. Отметьте, что уже сложили — галочки сохранятся в этом браузере.</p>
+    </div>
+    <div class="kit" id="kit">
+      <label><input type="checkbox" id="k1"><span>Полевая форма — 2 комплекта</span></label>
+      <label><input type="checkbox" id="k2"><span>Берцы или кроссовки, разношенные</span></label>
+      <label><input type="checkbox" id="k3"><span>Головной убор (кепи, панама)</span></label>
+      <label><input type="checkbox" id="k4"><span>Тёплая кофта и шапка на вечер</span></label>
+      <label><input type="checkbox" id="k5"><span>Дождевик или плащ-палатка</span></label>
+      <label><input type="checkbox" id="k6"><span>Перчатки тактические</span></label>
+      <label><input type="checkbox" id="k7"><span>Защитные очки или маска</span></label>
+      <label><input type="checkbox" id="k8"><span>Спальник и коврик</span></label>
+      <label><input type="checkbox" id="k9"><span>Кружка, миска, ложка</span></label>
+      <label><input type="checkbox" id="k10"><span>Фонарь и запасные батарейки</span></label>
+      <label><input type="checkbox" id="k11"><span>Сменное бельё и носки — по числу дней</span></label>
+      <label><input type="checkbox" id="k12"><span>Полотенце и средства гигиены</span></label>
+      <label><input type="checkbox" id="k13"><span>Средство от насекомых и солнца</span></label>
+      <label><input type="checkbox" id="k14"><span>Личная аптечка, если есть назначения</span></label>
+      <label><input type="checkbox" id="k15"><span>Копия свидетельства о рождении</span></label>
+      <label><input type="checkbox" id="k16"><span>Медицинская справка <span class="fill">[какая]</span></span></label>
+    </div>
+    <div class="kit-foot">
+      <span class="kit-count" id="kitCount">Отмечено 0 из 16</span>
+      <button type="button" id="kitReset">Сбросить</button>
+      <span style="font-size:14px;color:var(--sand-3)">Приводы, маски и шары — <span class="fill">[выдаём / своё]</span></span>
+    </div>
+  </div>
+</section>
+
+<section class="sect band-safety" id="bezopasnost">
+  <div class="wrap">
+    <div class="head">
+      <div><span class="eyebrow" style="color:var(--orange)">Для родителей</span><h2 class="ext">Безопасность</h2></div>
+      <p class="lede">Главный вопрос, который нам задают первым. Отвечаем до того, как вы его зададите.</p>
+    </div>
+    <div class="safety">
+      <div><b>Инструктаж до игры</b><p>Ни один ребёнок не выходит на площадку без инструктажа и проверки экипировки.</p></div>
+      <div><b>Защита глаз обязательна</b><p>Маска или очки не снимаются в игровой зоне — правило без исключений, за соблюдением следит судья.</p></div>
+      <div><b>Ограничение мощности</b><p>Скорость шара на детских приводах ограничена <span class="fill">[__ м/с]</span>, дистанция добивания — <span class="fill">[__ м]</span>.</p></div>
+      <div><b>Медик на смене</b><p><span class="fill">[медработник / аптечка / больница]</span></p></div>
+      <div><b>Инструкторы</b><p>На группу из <span class="fill">[__]</span> детей — <span class="fill">[__]</span> инструктора, с ночным дежурством.</p></div>
+      <div><b>Связь с родителями</b><p><span class="fill">[время звонков, чат, фотоотчёты]</span></p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sect">
+  <div class="wrap">
+    <div class="head">
+      <div><span class="eyebrow">Фото и видео</span><h2 class="ext">Как это выглядит</h2></div>
+      <p class="lede">Пока здесь места под кадры — подставим фото из закреплённых историй.</p>
+    </div>
+    <div class="gal">
+      <div class="slot"><b>Тренировки</b><small>фото 4:5</small></div>
+      <div class="slot"><b>Зима 2026</b><small>фото 4:5</small></div>
+      <div class="slot"><b>Снаряжение</b><small>фото 4:5</small></div>
+      <div class="slot"><b>Астана</b><small>фото 4:5</small></div>
+      <div class="slot"><b>Арена</b><small>фото 4:5</small></div>
+      <div class="slot"><b>Гости</b><small>фото 4:5</small></div>
+    </div>
+    <div class="kit-foot">
+      <a class="btn btn-steel" href="https://www.instagram.com/batyr_educationkz/" target="_blank" rel="noopener">Отзывы родителей — в закреплённых историях</a>
+    </div>
+  </div>
+</section>
+
+<section class="sect" id="voprosy" style="padding-top:0">
+  <div class="wrap">
+    <div class="head"><div><span class="eyebrow">FAQ</span><h2 class="ext">Частые вопросы</h2></div></div>
+    <div class="faq">
+      <details open><summary>С какого возраста берёте?</summary><p><span class="fill">[возрастные группы]</span> Группы формируются по возрасту, младшие и старшие занимаются отдельно.</p></details>
+      <details><summary>Страйкбол — это опасно?</summary><p>Шар 6 мм из пластика, обязательная защита глаз, ограниченная мощность приводов и судья на площадке. Синяк возможен, травма — нет. Все правила разбираются на инструктаже в первый день.</p></details>
+      <details><summary>Сколько стоит смена?</summary><p><span class="fill">[стоимость, что входит, рассрочка]</span></p></details>
+      <details><summary>Чем кормят?</summary><p><span class="fill">[приёмы пищи, кто готовит, аллергии]</span></p></details>
+      <details><summary>Можно ли звонить ребёнку?</summary><p><span class="fill">[правила по телефонам и время звонков]</span></p></details>
+      <details><summary>Как записаться?</summary><p>Напишите в WhatsApp — уточним возраст и даты, пришлём договор и список вещей. Место бронируется после <span class="fill">[предоплаты __%]</span>.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="sect" id="kontakty" style="background:linear-gradient(180deg,var(--night),#141B10);border-top:1px solid var(--edge)">
+  <div class="wrap">
+    <span class="eyebrow">Запись и контакты</span>
+    <h2 class="ext" style="font-size:clamp(29px,4.2vw,50px);margin-block:14px 16px">Напишите — подберём смену</h2>
+    <p class="lede">Отвечаем в WhatsApp обычно в течение дня. Расскажите возраст ребёнка и когда удобны даты.</p>
+    <div class="hero-cta">
+      <a class="btn btn-brass" href="https://wa.me/message/PPQJOGIJWX2AD1" target="_blank" rel="noopener">Написать в WhatsApp</a>
+      <a class="btn btn-steel" href="https://www.instagram.com/batyr_educationkz/" target="_blank" rel="noopener">Instagram</a>
+    </div>
+    <div class="cgrid">
+      <a class="ccell" href="https://wa.me/message/PPQJOGIJWX2AD1" target="_blank" rel="noopener"><b>WhatsApp</b><span>Написать в чат</span></a>
+      <div><b>Телефон</b><span class="fill">[+7 ___ ___ __ __]</span></div>
+      <div><b>Арена, Алматы</b><span class="fill">[адрес]</span></div>
+      <div><b>Астана</b><span class="fill">[адрес или контакт]</span></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="foot-in">
+    <img src="media/logo-light.png" alt="">
+    <span class="mono">Batyr Military Camp · Almaty · с 2023</span>
+    <span style="margin-left:auto"><a class="mono" href="https://www.instagram.com/batyr_educationkz/" target="_blank" rel="noopener">@batyr_educationkz</a></span>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+/* ---------- список снаряжения ---------- */
+(function(){
+  var boxes=[].slice.call(document.querySelectorAll('#kit input[type=checkbox]'));
+  var out=document.getElementById('kitCount'), KEY='batyr-kit-v1';
+  function render(){out.textContent='Отмечено '+boxes.filter(function(b){return b.checked}).length+' из '+boxes.length}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(boxes.filter(function(b){return b.checked}).map(function(b){return b.id})))}catch(e){}}
+  try{var raw=localStorage.getItem(KEY);if(raw){var ids=JSON.parse(raw)||[];boxes.forEach(function(b){if(ids.indexOf(b.id)>-1)b.checked=true})}}catch(e){}
+  boxes.forEach(function(b){b.addEventListener('change',function(){render();save()})});
+  document.getElementById('kitReset').addEventListener('click',function(){boxes.forEach(function(b){b.checked=false});render();save()});
+  render();
+})();
+
+/* ---------- наклон медальона за курсором ---------- */
+(function(){
+  var med=document.getElementById('medallion'), inner=med&&med.querySelector('.med-in');
+  if(!med||!inner) return;
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if(!window.matchMedia('(hover: hover)').matches) return;
+  var hero=document.getElementById('top');
+  hero.addEventListener('pointermove',function(e){
+    var r=hero.getBoundingClientRect();
+    var x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
+    med.classList.add('tilting');
+    inner.style.transform='rotateX('+(8-y*16).toFixed(2)+'deg) rotateY('+(-12+x*22).toFixed(2)+'deg)';
+  });
+  hero.addEventListener('pointerleave',function(){
+    inner.style.transform='';
+    med.classList.remove('tilting');
+  });
+})();
+
+/* ---------- 3D-сцена: хребет и сосновый лес ---------- */
+(function(){
+  var canvas=document.getElementById('scene');
+  if(!canvas||!window.THREE) return;                    // без three.js остаётся CSS-фон и SVG-хребет
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var renderer;
+  try{ renderer=new THREE.WebGLRenderer({canvas:canvas,antialias:true,alpha:true}); }catch(e){ return; }
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));
+
+  var scene=new THREE.Scene();
+  scene.fog=new THREE.FogExp2(0x0a0f08,0.0135);
+  var camera=new THREE.PerspectiveCamera(52,1,0.1,600);
+
+  function groundH(x,z){
+    return Math.sin(x*0.055)*3.4 + Math.cos(z*0.07)*2.6 + Math.sin((x+z)*0.028)*4.2 + Math.cos(x*0.013)*6;
+  }
+
+  var geo=new THREE.PlaneGeometry(420,260,72,46);
+  geo.rotateX(-Math.PI/2);
+  var pos=geo.attributes.position;
+  for(var i=0;i<pos.count;i++){ pos.setY(i, groundH(pos.getX(i),pos.getZ(i))); }
+  geo.computeVertexNormals();
+  scene.add(new THREE.Mesh(geo,new THREE.MeshLambertMaterial({color:0x1b2414,flatShading:true})));
+
+  var pineGeo=new THREE.ConeGeometry(1,1,7);
+  var pineMat=new THREE.MeshLambertMaterial({color:0x0f1709,flatShading:true});
+  var trunkGeo=new THREE.CylinderGeometry(.13,.17,1,5);
+  var trunkMat=new THREE.MeshLambertMaterial({color:0x2a2114});
+  var forest=new THREE.Group();
+  for(var n=0;n<190;n++){
+    var x=(Math.random()-0.5)*380, z=-Math.random()*220+30;
+    if(Math.abs(x)<16 && z>-30) continue;              // просека по центру кадра
+    var h=5+Math.random()*9, r=h*(0.19+Math.random()*0.08), y=groundH(x,z);
+    var t=new THREE.Mesh(pineGeo,pineMat);
+    t.scale.set(r,h,r); t.position.set(x,y+h/2,z);
+    t.rotation.y=Math.random()*Math.PI;
+    forest.add(t);
+    var tr=new THREE.Mesh(trunkGeo,trunkMat);
+    tr.scale.set(1,h*0.26,1); tr.position.set(x,y+h*0.13,z);
+    forest.add(tr);
+  }
+  scene.add(forest);
+
+  scene.add(new THREE.HemisphereLight(0x5a6b48,0x0a0d06,0.55));
+  var sun=new THREE.DirectionalLight(0xC9A227,1.15);
+  sun.position.set(-70,46,26); scene.add(sun);
+  var rim=new THREE.DirectionalLight(0x7f9ad1,0.3);
+  rim.position.set(60,30,-40); scene.add(rim);
+
+  function resize(){
+    var w=canvas.clientWidth||window.innerWidth, h=canvas.clientHeight||520;
+    renderer.setSize(w,h,false);
+    camera.aspect=w/h; camera.updateProjectionMatrix();
+  }
+  var target=new THREE.Vector3(0,7,-60);
+  function frame(t){
+    var s=t*0.00011;
+    camera.position.set(Math.sin(s)*9, 17+Math.sin(s*1.3)*1.6, 46+Math.cos(s*0.8)*4);
+    camera.lookAt(target);
+    renderer.render(scene,camera);
+  }
+  var running=true, raf=0;
+  function loop(t){ if(!running) return; frame(t); raf=requestAnimationFrame(loop); }
+
+  resize();
+  window.addEventListener('resize',function(){resize();if(!running)frame(performance.now())});
+  if(reduce){ frame(3000); }
+  else{
+    var hero=document.getElementById('top');
+    if('IntersectionObserver' in window){
+      new IntersectionObserver(function(es){
+        es.forEach(function(e){
+          if(e.isIntersecting && !running){ running=true; raf=requestAnimationFrame(loop); }
+          else if(!e.isIntersecting && running){ running=false; cancelAnimationFrame(raf); }
+        });
+      },{threshold:0.02}).observe(hero);
+    }
+    raf=requestAnimationFrame(loop);
+  }
+})();
+</script>
